@@ -30,6 +30,7 @@ $ sh startup.sh
 ```
 ## Routes
 http://localhost:8080/api/v1/clientes/
+http://localhost:8080/api/v1/clientes/{ids}
 
 Example 
 ```
