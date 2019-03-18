@@ -32,7 +32,7 @@ $ sh startup.sh
 
 http://localhost:8080/api/v1/clientes/
 
-http://localhost:8080/api/v1/clientes/{ids}
+http://localhost:8080/api/v1/clientes/{id}
 
 Example 
 ```
