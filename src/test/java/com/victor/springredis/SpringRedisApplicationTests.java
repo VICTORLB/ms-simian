@@ -5,25 +5,30 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@AutoConfigureMockMvc
 public class SpringRedisApplicationTests {
-//
-//	@Test
-//	public void contextLoads() {
-//	}
+
+	@Test
+	public void contextLoads() {
+	}
+	
 	@Autowired
 	private WebApplicationContext context;
 
@@ -37,31 +42,31 @@ public class SpringRedisApplicationTests {
 	@Test
 	public void testHome() throws Exception {
 
-		String URL1="/api/v1";
+		String URL1="/api/v1/clientes/";
 		
 		System.out.println(this.mvc.perform(get(URL1)).andDo(print()));
 		
 		this.mvc.perform(get(URL1)).andExpect(status().isOk())
 				.andExpect(content().string(containsString("clientes")));
 	}
-//
+
 //	@Test
 //	public void findClientesByNome() throws Exception {
 //
-//		String URL2="/api/clientes/search/findByNomeAllIgnoringCase?nome=cliente 1";
+//		String URL2="/api/v1/clientes/search/findByNomeAllIgnoringCase?nome=Joao";
 //		
 //		System.out.println(this.mvc.perform(get(URL2)).andDo(print()));
 //		
 //		this.mvc.perform(
 //				get(URL2))
 //				.andExpect(status().isOk())
-//				.andExpect(jsonPath("endereco", equalTo("Barueri")));
+//				.andExpect((ResultMatcher) jsonPath("endereco", equals("Barueri")));
 //	}
-//
+
 //	@Test
 //	public void findClientesByNomeContaining() throws Exception {
 //
-//		String URL3="/api/clientes/search/findByNomeContainingAllIgnoringCase?nome=e";
+//		String URL3="/api/v1/clientes/search/findByNomeContainingAllIgnoringCase?nome=dro";
 //		
 //		System.out.println(this.mvc.perform(get(URL3)).andDo(print()));
 //		
