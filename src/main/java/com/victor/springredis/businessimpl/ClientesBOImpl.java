@@ -2,6 +2,7 @@ package com.victor.springredis.businessimpl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -31,6 +32,7 @@ public class ClientesBOImpl implements ClientesBO{
 		this.clienteRepository = clienteRepository;
 	}
 
+	
 	@Override
 	@Cacheable(cacheNames = "spring-redis", key="{#nome}")
 	public Cliente getCliente(String nome) {

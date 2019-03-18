@@ -1,5 +1,7 @@
 package com.victor.springredis.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,4 +20,6 @@ public interface ClienteRepository extends JpaRepository<Cliente,Long> {
 
 	Cliente findByNomeAllIgnoringCase(@Param("nome") String nome);
 
+	Optional<Cliente> findById(Long id);
+	
 }

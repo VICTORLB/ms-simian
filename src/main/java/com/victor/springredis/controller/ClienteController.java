@@ -27,23 +27,19 @@ public class ClienteController {
 	@Autowired
 	private final ClientesBO clientesBO; 
 	
+	private final String CLIENTE_URI = "clientes/";
+	
 	public ClienteController(ClientesBO clientesBO) {
 		this.clientesBO = clientesBO;
 	}
 
-	@GetMapping
-	public ResponseEntity<Cliente> getByName() {
-		log.debug("> > > ClienteController.index() < < <");
-		Cliente clientes = clientesBO.getCliente("Joao");
-		return new ResponseEntity<Cliente>(clientes,HttpStatus.OK);
-	}
-
-	@GetMapping("/list")
+	@GetMapping("/")
 	@ResponseBody
 	public ResponseEntity<List<Cliente>> getList() {
 		log.debug("> > > ClienteController.list() < < <");
 		List<Cliente> list = clientesBO.getClientes();
 		return new ResponseEntity<List<Cliente>>(list, HttpStatus.OK);
 	}
+
 	
 }

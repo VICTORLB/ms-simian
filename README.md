@@ -29,13 +29,12 @@ $ open http://$(hostname):8080
 $ sh startup.sh
 ```
 ## Routes
-http://localhost:8080/api/v1/clientes/list
 http://localhost:8080/api/v1/clientes/
 
 Example 
 ```
 curl -X GET \
-  http://localhost:8080/api/v1/clientes/list \
+  http://localhost:8080/api/v1/clientes/ \
   -H 'Content-Type: application/json' \
   -H 'Postman-Token: 7f0526d0-84f7-44e0-912b-5742f5958024' \
   -H 'cache-control: no-cache'
