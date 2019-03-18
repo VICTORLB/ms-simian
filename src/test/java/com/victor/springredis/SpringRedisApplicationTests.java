@@ -1,10 +1,8 @@
 package com.victor.springredis;
 
 
-import static org.hamcrest.CoreMatchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -14,6 +12,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultMatcher;
@@ -44,10 +44,13 @@ public class SpringRedisApplicationTests {
 
 		String URL1="/api/v1/clientes/";
 		
-		System.out.println(this.mvc.perform(get(URL1)).andDo(print()));
+		HttpHeaders headers = new HttpHeaders();
+	    headers.setContentType(MediaType.APPLICATION_JSON);
+	    headers.add("Cache-Control", "no-cache");
 		
-		this.mvc.perform(get(URL1)).andExpect(status().isOk())
-				.andExpect(content().string(containsString("clientes")));
+		System.out.println(this.mvc.perform(get(URL1).headers(headers)).andDo(print()));
+		
+		this.mvc.perform(get(URL1).headers(headers)).andExpect(status().isOk());
 	}
 
 //	@Test
