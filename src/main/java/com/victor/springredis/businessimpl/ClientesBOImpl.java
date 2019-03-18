@@ -2,10 +2,10 @@ package com.victor.springredis.businessimpl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
@@ -40,6 +40,16 @@ public class ClientesBOImpl implements ClientesBO{
 		log.debug("Retornou o cliente",cliente.getNome());
 		return cliente;
 	};
+	
+	
+
+	@Override
+	@Cacheable(cacheNames = "spring-redis")
+	public Cliente getClientById(Long clientid){
+		Cliente client = this.clienteRepository.findById(clientid)
+				    .orElseThrow(() -> new ResourceNotFoundException("Client not found for this id :: " + clientid));
+		return client;
+	}
 	
 	@Override
 	@Cacheable(cacheNames = "spring-redis")

@@ -10,4 +10,5 @@ public interface ClientesBO {
 	
 	public List<Cliente> getClientes();
 	
+	public Cliente getClientById(Long clientid);
 }
