@@ -43,6 +43,7 @@ public class ClienteController {
 	}
 
 	 @GetMapping("/{id}")
+	 @ResponseBody
 	 public ResponseEntity<Cliente> getEmployeeById(@PathVariable(value = "id") Long clientId)
 	   throws ResourceNotFoundException {
 	  Cliente cliente = clientesBO.getClientById(clientId);
