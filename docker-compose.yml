@@ -1,0 +1,21 @@
+version: '3'
+services:
+  redis:
+    image: "redis:alpine"
+    hostname: redis
+    ports:
+      - "6379:6379"
+  api:
+    image: "test"
+    ports:
+      - "9000:9000"
+    environment:
+      spring_redis_host: redis
+      
+#  api:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    ports:
+#      - "9000:9000"
+#      

@@ -1,8 +1,10 @@
+server:
+  port: 9000
 spring:
   application:
     name: Spring Boot Redis
   redis:
-    host: localhost
+    host: redis
     port: 6379
     password:
     timeout: 6000
@@ -23,8 +25,3 @@ spring:
     driver-class-name: org.h2.Driver
   profiles:
     active: dev
-
-info:
-  project:
-    name: Spring Boot Cache
-  
