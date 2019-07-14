@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: Spring Boot Redis
+  redis:
+    host: localhost
+    port: 6379
+    password:
+    timeout: 6000
+  cache: 
+    type: redis
+    cacheNames: spring-redis
+    redis:
+      time-to-live: 60000
+#JPA - H2
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    show-sql: true
+  datasource:
+    url: jdbc:h2:mem:meubd
+    driver-class-name: org.h2.Driver
+  profiles:
+    active: dev
+
+info:
+  project:
+    name: Spring Boot Cache
+  

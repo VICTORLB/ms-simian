@@ -22,8 +22,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 @Setter
-@Builder
 @ToString
+@Builder
 public class Cliente implements Serializable {
 
 	/**
