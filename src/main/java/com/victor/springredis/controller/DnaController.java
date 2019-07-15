@@ -30,7 +30,6 @@ consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_JSON_UTF8_VA
 )
 public class DnaController {
 
-	@Autowired
 	private final DnaBO dnaBO;
 	
 	@GetMapping("/")
