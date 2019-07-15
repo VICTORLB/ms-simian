@@ -9,7 +9,7 @@ public class IndexController {
 	
 	@RequestMapping("/")
 	String home () {
-		return "Hub Services!";
+		return "Test Simios!";
 	}
 	
 }
