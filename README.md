@@ -1,4 +1,4 @@
-## SpringBoot 2.1.3 Redis
+## Simios Project
 
 
 ### Requirements
