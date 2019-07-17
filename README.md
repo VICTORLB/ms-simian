@@ -30,15 +30,17 @@ $ sh startup.sh
 ```
 ## Routes
 
-http://localhost:8080/api/v1/clientes/
+GET http://localhost:9000/api/v1/simian/
 
-http://localhost:8080/api/v1/clientes/{id}
+POST http://localhost:9000/api/v1/simian/
 
 Example 
-```
-curl -X GET \
-  http://localhost:8080/api/v1/clientes/ \
+```curl -X POST \
+  http://localhost:9000/api/v1/simian/ \
   -H 'Content-Type: application/json' \
-  -H 'Postman-Token: 7f0526d0-84f7-44e0-912b-5742f5958024' \
-  -H 'cache-control: no-cache'
+  -H 'Postman-Token: 47c04b8c-5011-44d2-bd5f-886690626094' \
+  -H 'cache-control: no-cache' \
+  -d '{
+      "dna": ["AAGAGA", "TCAAGC", "TTCTGT", "ACGCTG", "CTCGTT", "TGTCGA"]
+}'
   ```
