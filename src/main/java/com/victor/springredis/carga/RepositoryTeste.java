@@ -6,31 +6,33 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import com.victor.springredis.model.Cliente;
+import com.victor.springredis.model.Dna;
 import com.victor.springredis.repository.ClienteRepository;
+import com.victor.springredis.repository.DnaRepository;
 
 
 @Component
 public class RepositoryTeste implements ApplicationRunner 
 {
 
-	private static final long ID_CLIENTE_1 = 11l;
-	private static final long ID_CLIENTE_2 = 22l;
+	private static final long ID_DNA_1 = 11l;
+	private static final long ID_DNA_2 = 22l;
 	
 	@Autowired
-    private ClienteRepository clienteRepository;
+    private DnaRepository dnaRepository;
 	
     @Override
     public void run(ApplicationArguments applicationArguments) throws Exception {
 
-    	System.out.println(">>> Iniciando carga de dados...");
-    	Cliente client1 = new Cliente(ID_CLIENTE_1,"Joao","Barueri");
-    	Cliente client2 = new Cliente(ID_CLIENTE_2,"Pedro","Sao Paulo");    	
+    	System.out.println(">>> Iniciando carga de dados de DNA...");
+    	Dna dna1 = Dna.builder().dna("\"CTGAGA\", \"CTATGC\", \"TATTGT\", \"AGATGG\", \"CCCCTA\", \"TCACTG\"").isSimian(true).build();
+    	Dna dna2 = Dna.builder().dna("\"CAGAGA\", \"TCTTGC\", \"CGCTGT\", \"ACGCTG\", \"CTCGTT\", \"TGTCGG\"").isSimian(false).build();
     	
-	clienteRepository.saveAndFlush(client2);
-	System.out.println(">>> Gravado cliente 2: "+client2);
+    	dnaRepository.saveAndFlush(dna1);
+	System.out.println(">>> Gravado dna 1: "+dna1);
 
-    	clienteRepository.saveAndFlush(client1);
-    	System.out.println(">>> Gravado cliente 1: "+client1);
+	dnaRepository.saveAndFlush(dna2);
+    	System.out.println(">>> Gravado dna 2: "+dna2);
 		
     }
  

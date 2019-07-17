@@ -18,6 +18,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.victor.springredis.constants.DnaConstants;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -40,7 +42,7 @@ public class SpringRedisApplicationTests {
 	@Test
 	public void testHome() throws Exception {
 
-		String URL1="/api/v1/clientes/";
+		String URL1=DnaConstants.URL_SIMIAN;
 		
 		HttpHeaders headers = new HttpHeaders();
 	    headers.setContentType(MediaType.APPLICATION_JSON);

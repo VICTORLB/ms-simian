@@ -1,45 +1,43 @@
 package com.victor.springredis.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.UniqueElements;
+import com.victor.springredis.constants.DnaConstants;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
-@ToString
 @Builder
-public class Dna implements Serializable {
+@Data
+@Entity
+@Table(name = DnaConstants.DNA, uniqueConstraints = {
+	      @UniqueConstraint(columnNames = "dna", name = "uniqueDnaConstraint")}
+	)
+public class Dna extends BaseDomain {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 5170659148906750265L;
+	private static final long serialVersionUID = 4241591921865446727L;
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
 	private Long id;
 
-    @NotNull
-    @UniqueElements
-    @Length(min=36, max=36,message="O tamanho do nome deve ser de {max} caracteres")
+	@NotNull 
 	private String dna;
+    
+    private Boolean isSimian;
+
 
 	
 }
