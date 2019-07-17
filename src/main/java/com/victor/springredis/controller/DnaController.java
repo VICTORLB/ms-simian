@@ -47,7 +47,11 @@ public class DnaController {
 		DnaDtoV1 dnaResponse = dnaBO.addDna(dnaHumanSimian); 
 		
 		if (dnaResponse != null) {
-			return ResponseEntity.ok().body(dnaResponse);
+			if (dnaResponse.getIsSimian())
+				return ResponseEntity.ok().body(dnaResponse);
+			else {
+				return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+			}
 		}else{
 			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 		}

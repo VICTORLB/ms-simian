@@ -5,9 +5,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import com.victor.springredis.model.Cliente;
 import com.victor.springredis.model.Dna;
-import com.victor.springredis.repository.ClienteRepository;
 import com.victor.springredis.repository.DnaRepository;
 
 
@@ -25,8 +23,8 @@ public class RepositoryTeste implements ApplicationRunner
     public void run(ApplicationArguments applicationArguments) throws Exception {
 
     	System.out.println(">>> Iniciando carga de dados de DNA...");
-    	Dna dna1 = Dna.builder().dna("\"CTGAGA\", \"CTATGC\", \"TATTGT\", \"AGATGG\", \"CCCCTA\", \"TCACTG\"").isSimian(true).build();
-    	Dna dna2 = Dna.builder().dna("\"CAGAGA\", \"TCTTGC\", \"CGCTGT\", \"ACGCTG\", \"CTCGTT\", \"TGTCGG\"").isSimian(false).build();
+    	Dna dna1 = Dna.builder().dna("[AAGAGA, TCAAGC, TTCTGT, ACGCTG, CTCGTT, TGTCGG]").isSimian(false).build();
+    	Dna dna2 = Dna.builder().dna("[CTGAGA, CTATGC, TATTGT, AGATGG, CCCCTA, TCACTG]").isSimian(true).build();
     	
     	dnaRepository.saveAndFlush(dna1);
 	System.out.println(">>> Gravado dna 1: "+dna1);
