@@ -21,7 +21,7 @@ $ mvn clean install
 ### Starting 
 ```sh
 $ mvn spring-boot:run
-$ open http://$(hostname):8080
+$ open http://$(hostname):9000
 ```
 
 ### Compiling and Starting
