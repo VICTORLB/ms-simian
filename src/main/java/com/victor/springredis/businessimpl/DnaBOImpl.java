@@ -29,80 +29,45 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Transactional
 @AllArgsConstructor
-public class DnaBOImpl implements DnaBO{
-	
-	private static final Logger LOGGER = LoggerFactory.getLogger(DnaBOImpl.class);
-	
-	private DnaRepository dnaRepository;
-	
-	public DnaResponse getDnas() {
-	
-		final List<Dna> foundDnas= dnaRepository.findAll();
-		
-		if (foundDnas == null) {
-            return DnaResponse.builder().build();
-        }
-		List<DnaDtoV1> lista = new ArrayList<>();
-		for (Dna item : foundDnas) {
-			lista.add(DnaDtoV1.builder().dna(item.getDna())
-					.id(item.getId())
-					.isSimian(item.getIsSimian())
-					.build());
-		}
-		
-		/*
-		//payment schema
+public class DnaBOImpl implements DnaBO {
 
-		final var paymentsConditions = cartWebOrder.getPaymentSchema().getPaymentConditions().stream()
-		        .map(
-		                paymentConditions ->  CartWebPaymentsPaymentConditionsDtoV1.builder()
-		                    .id(paymentConditions.getId())
-		                        .name(paymentConditions.getName())
-		                        .paymentMethodCode(paymentConditions.getPaymentMethodCode())
-		                        .installments(paymentConditions.getInstallments())
-		                .build()
-		        ).collect(Collectors.toList());
-		*/
-		
-		final List<DnaDtoV1> listaStream = 
-				foundDnas.stream()
-					.map(item -> 
-					DnaDtoV1.builder().id(item.getId())
-					.dna(item.getDna()).isSimian(item.getIsSimian()).
-				)
-		
-		return DnaResponse.builder().dna(lista).build();
-		
+	private static final Logger LOGGER = LoggerFactory.getLogger(DnaBOImpl.class);
+
+	private DnaRepository dnaRepository;
+
+	public DnaResponse getDnas() {
+
+		final List<Dna> foundDnas = dnaRepository.findAll();
+
+		if (foundDnas == null) {
+			return DnaResponse.builder().build();
+		}
+		return DnaResponse.builder().dna(foundDnas.stream().map(
+				item -> DnaDtoV1.builder().id(item.getId()).dna(item.getDna()).isSimian(item.getIsSimian()).build())
+				.collect(Collectors.toList())).build();
+
 	}
 
-
 	public StatsDtoV1 getStats() {
-	
-		final List<Dna> foundDnas= dnaRepository.findAll();
+
+		final List<Dna> foundDnas = dnaRepository.findAll();
 
 		Long totalDnas = foundDnas.stream().count();
 		Long totalSimian = foundDnas.stream().filter(dnas -> dnas.getIsSimian().equals(Boolean.TRUE)).count();
 		Long totalHuman = foundDnas.stream().filter(dnas -> dnas.getIsSimian().equals(Boolean.FALSE)).count();
 		BigDecimal ratio = BigDecimal.valueOf(totalSimian).divide(BigDecimal.valueOf(totalHuman));
-		LOGGER.info("count_mutant_dna [{}], count_human_dna[{}], ratio[{}], totalDnas[{}]", totalSimian, totalHuman, ratio, totalDnas);
-		
-		return StatsDtoV1.builder().countHumanDna(totalHuman)
-				.countMutantDna(totalSimian)
-				.ratio(ratio).build();
-				
-		
+		LOGGER.info("count_mutant_dna [{}], count_human_dna[{}], ratio[{}], totalDnas[{}]", totalSimian, totalHuman,
+				ratio, totalDnas);
+
+		return StatsDtoV1.builder().countHumanDna(totalHuman).countMutantDna(totalSimian).ratio(ratio).build();
+
 	}
-	
+
 	public DnaDtoV1 addDna(DnaHumanSimianDtoV1 dnaRequest) {
-		Dna dna = dnaRepository.saveAndFlush(Dna.builder()
-				.dna(Arrays.toString(dnaRequest.getDna()))
-				.isSimian(DnaUtil.isSimian(dnaRequest.getDna()))
-				.build());
-		
-		return DnaDtoV1.builder()
-				.dna(dna.getDna())
-				.id(dna.getId())
-				.isSimian(dna.getIsSimian()).build();
+		Dna dna = dnaRepository.saveAndFlush(Dna.builder().dna(Arrays.toString(dnaRequest.getDna()))
+				.isSimian(DnaUtil.isSimian(dnaRequest.getDna())).build());
+
+		return DnaDtoV1.builder().dna(dna.getDna()).id(dna.getId()).isSimian(dna.getIsSimian()).build();
 	}
-	
+
 }
