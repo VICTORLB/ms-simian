@@ -1,4 +1,6 @@
-package com.victor.springredis.model;
+package com.victor.springredis.dto;
+
+import com.victor.springredis.model.BaseDomain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,7 +15,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @Builder
-public class DnaHumanSimian extends BaseDomain {
+public class DnaHumanSimianDtoV1 extends BaseDomain {
 
 	/**
 	 * 

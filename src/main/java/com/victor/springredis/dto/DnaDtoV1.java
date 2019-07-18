@@ -1,4 +1,4 @@
-package dto;
+package com.victor.springredis.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;

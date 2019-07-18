@@ -1,5 +1,8 @@
 package com.victor.springredis.carga;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -13,9 +16,6 @@ import com.victor.springredis.repository.DnaRepository;
 public class RepositoryTeste implements ApplicationRunner 
 {
 
-	private static final long ID_DNA_1 = 11l;
-	private static final long ID_DNA_2 = 22l;
-	
 	@Autowired
     private DnaRepository dnaRepository;
 	
@@ -23,15 +23,36 @@ public class RepositoryTeste implements ApplicationRunner
     public void run(ApplicationArguments applicationArguments) throws Exception {
 
     	System.out.println(">>> Iniciando carga de dados de DNA...");
-    	Dna dna1 = Dna.builder().dna("[AAGAGA, TCAAGC, TTCTGT, ACGCTG, CTCGTT, TGTCGG]").isSimian(false).build();
-    	Dna dna2 = Dna.builder().dna("[CTGAGA, CTATGC, TATTGT, AGATGG, CCCCTA, TCACTG]").isSimian(true).build();
+    	List<Dna> listDna = new ArrayList<>();
+    	listDna.add(Dna.builder().dna("[AATGGA, TCAAGC, TTCTGT, ACGCTG, CTCGTT, TGTCGG]").isSimian(false).build());
+    	listDna.add(Dna.builder().dna("[AAGAGA, ACAAGC, TTCTGT, ACGCTG, CTCGTT, TGTCGG]").isSimian(false).build());
+    	listDna.add(Dna.builder().dna("[AAGAGA, CCAAGC, TTCTGT, ACGCTG, CTCGTT, TGTCGG]").isSimian(false).build());
+    	listDna.add(Dna.builder().dna("[AAGAGA, GCAAGC, TTCTGT, ACGCTG, CTCGTT, TGTCGG]").isSimian(false).build());
+    	listDna.add(Dna.builder().dna("[AAGAGA, TCAAGC, TACTGT, ACGCTG, CTCGTT, TGTCGG]").isSimian(false).build());
+    	listDna.add(Dna.builder().dna("[AAGAGA, TCAAGC, TCCTGT, ACGCTG, CTCGTT, TGTCGG]").isSimian(false).build());
+    	listDna.add(Dna.builder().dna("[AAGAGA, TCAAGC, TGCTGT, ACGCTG, CTCGTT, TGTCGG]").isSimian(false).build());
+    	listDna.add(Dna.builder().dna("[AAGAGA, TCAAGC, TTCTGT, ACGGTG, CTCGTT, TGTCGG]").isSimian(false).build());
+    	listDna.add(Dna.builder().dna("[AAGAGA, TCAAGC, TTCTGT, ACGTTG, CTCGTT, TGTCGG]").isSimian(false).build());
+    	listDna.add(Dna.builder().dna("[AAGAGA, TCAAGC, TTCTGT, ACGATG, CTCGTT, TGTCGG]").isSimian(false).build());
+    	listDna.add(Dna.builder().dna("[AAGAGA, TCAAGC, TTCTGT, ACGCTG, CTCCTT, TGTCGG]").isSimian(false).build());
+    	listDna.add(Dna.builder().dna("[AAGAGA, TCAAGC, TTCTGT, ACGCTG, CTCGTT, TGTCAA]").isSimian(false).build());
+    	listDna.add(Dna.builder().dna("[AAGAGA, TCAAGC, TTCTGT, ACGCTG, CTCGTT, TGTCAT]").isSimian(false).build());
+    	listDna.add(Dna.builder().dna("[AAGAGA, TCAAGC, TTCTGT, ACGCTG, CTCGTT, TGTCCG]").isSimian(false).build());
     	
-    	dnaRepository.saveAndFlush(dna1);
-	System.out.println(">>> Gravado dna 1: "+dna1);
-
-	dnaRepository.saveAndFlush(dna2);
-    	System.out.println(">>> Gravado dna 2: "+dna2);
-		
+    	listDna.add(Dna.builder().dna("[CTGAGA, CTATGC, TATTGT, AGATGG, CCCCTA, TCACTG]").isSimian(true).build());
+    	listDna.add(Dna.builder().dna("[CTGAGA, CTATGC, TATTGT, AGATGG, CCCCTA, TCACTA]").isSimian(true).build());
+    	listDna.add(Dna.builder().dna("[CTGAGA, CTATGC, TATTGT, AGATGG, CCCCTA, TCACTC]").isSimian(true).build());
+    	listDna.add(Dna.builder().dna("[CTGAGA, CTATGC, TATTGT, AGATGG, CCCCTA, TCACTT]").isSimian(true).build());
+    	listDna.add(Dna.builder().dna("[CTGAGA, CTATGC, TATTGT, AGATGG, CCCCTA, TCACGT]").isSimian(true).build());
+    	listDna.add(Dna.builder().dna("[CTGAGA, CTATGC, TATTGT, AGATGG, CCCCTA, TCACAT]").isSimian(true).build());
+    	listDna.add(Dna.builder().dna("[CTGAGA, CTATGC, TATTGT, AGATGG, CCCCTA, TCACCT]").isSimian(true).build());
+    	
+//    	Dna dna1 = Dna.builder().dna("[AAGAGA, TCAAGC, TTCTGT, ACGCTG, CTCGTT, TGTCGG]").isSimian(false).build();
+//    	Dna dna2 = Dna.builder().dna("[CTGAGA, CTATGC, TATTGT, AGATGG, CCCCTA, TCACTG]").isSimian(true).build();
+    	dnaRepository.saveAll(listDna);
+    	dnaRepository.flush();
+    	
+			
     }
  
 }

@@ -1,4 +1,4 @@
-package dto;
+package com.victor.springredis.dto;
 
 import java.util.List;
 

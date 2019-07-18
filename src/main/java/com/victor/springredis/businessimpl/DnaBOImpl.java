@@ -1,5 +1,7 @@
 package com.victor.springredis.businessimpl;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -7,17 +9,19 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.victor.springredis.business.DnaBO;
+import com.victor.springredis.dto.DnaDtoV1;
+import com.victor.springredis.dto.DnaHumanSimianDtoV1;
+import com.victor.springredis.dto.DnaResponse;
+import com.victor.springredis.dto.StatsDtoV1;
 import com.victor.springredis.model.Dna;
-import com.victor.springredis.model.DnaHumanSimian;
 import com.victor.springredis.repository.DnaRepository;
 import com.victor.springredis.util.DnaUtil;
 
-import dto.DnaDtoV1;
-import dto.DnaResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,13 +31,10 @@ import lombok.extern.slf4j.Slf4j;
 @AllArgsConstructor
 public class DnaBOImpl implements DnaBO{
 	
+	private static final Logger LOGGER = LoggerFactory.getLogger(DnaBOImpl.class);
+	
 	private DnaRepository dnaRepository;
 	
-	public Dna getDna(String dna) {
-	
-		return null;
-	}
-
 	public DnaResponse getDnas() {
 	
 		final List<Dna> foundDnas= dnaRepository.findAll();
@@ -48,16 +49,32 @@ public class DnaBOImpl implements DnaBO{
 					.isSimian(item.getIsSimian())
 					.build());
 		}
+		
+		List<DnaDtoV1> listaStream = foundDnas.stream().forEach(item -> listaStream.);
+		
 		return DnaResponse.builder().dna(lista).build();
 		
 	}
 
-	public Dna getDnaById(Long id) {
-		
-		return null;
-	}
 
-	public DnaDtoV1 addDna(DnaHumanSimian dnaRequest) {
+	public StatsDtoV1 getStats() {
+	
+		final List<Dna> foundDnas= dnaRepository.findAll();
+
+		Long totalDnas = foundDnas.stream().count();
+		Long totalSimian = foundDnas.stream().filter(dnas -> dnas.getIsSimian().equals(Boolean.TRUE)).count();
+		Long totalHuman = foundDnas.stream().filter(dnas -> dnas.getIsSimian().equals(Boolean.FALSE)).count();
+		BigDecimal ratio = BigDecimal.valueOf(totalSimian).divide(BigDecimal.valueOf(totalHuman));
+		LOGGER.info("count_mutant_dna [{}], count_human_dna[{}], ratio[{}], totalDnas[{}]", totalSimian, totalHuman, ratio, totalDnas);
+		
+		return StatsDtoV1.builder().countHumanDna(totalHuman)
+				.countMutantDna(totalSimian)
+				.ratio(ratio).build();
+				
+		
+	}
+	
+	public DnaDtoV1 addDna(DnaHumanSimianDtoV1 dnaRequest) {
 		Dna dna = dnaRepository.saveAndFlush(Dna.builder()
 				.dna(Arrays.toString(dnaRequest.getDna()))
 				.isSimian(DnaUtil.isSimian(dnaRequest.getDna()))

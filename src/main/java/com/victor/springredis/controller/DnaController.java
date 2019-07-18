@@ -12,10 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.victor.springredis.business.DnaBO;
 import com.victor.springredis.constants.DnaConstants;
-import com.victor.springredis.model.DnaHumanSimian;
+import com.victor.springredis.dto.DnaDtoV1;
+import com.victor.springredis.dto.DnaHumanSimianDtoV1;
+import com.victor.springredis.dto.DnaResponse;
+import com.victor.springredis.dto.StatsDtoV1;
 
-import dto.DnaDtoV1;
-import dto.DnaResponse;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -42,12 +43,13 @@ public class DnaController {
 	}
 
 	@GetMapping(DnaConstants.URL_STATS)
-	public ResponseEntity<DnaResponse> getStats() {
-		log.info("> > > DnaController.list() < < <");
-		return new ResponseEntity<>(dnaBO.getDnas(), HttpStatus.OK);
+	public ResponseEntity<StatsDtoV1> getStats() {
+		log.info("> > > DnaController {} < < <",DnaConstants.URL_STATS);
+		return new ResponseEntity<>(dnaBO.getStats(), HttpStatus.OK);
 	}
+	
 	@PostMapping	
-	public ResponseEntity<DnaDtoV1> postDna(@RequestBody DnaHumanSimian dnaHumanSimian) {
+	public ResponseEntity<DnaDtoV1> postDna(@RequestBody DnaHumanSimianDtoV1 dnaHumanSimian) {
 		
 		DnaDtoV1 dnaResponse = dnaBO.addDna(dnaHumanSimian); 
 		
