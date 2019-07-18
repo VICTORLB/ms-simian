@@ -50,7 +50,26 @@ public class DnaBOImpl implements DnaBO{
 					.build());
 		}
 		
-		List<DnaDtoV1> listaStream = foundDnas.stream().forEach(item -> listaStream.);
+		/*
+		//payment schema
+
+		final var paymentsConditions = cartWebOrder.getPaymentSchema().getPaymentConditions().stream()
+		        .map(
+		                paymentConditions ->  CartWebPaymentsPaymentConditionsDtoV1.builder()
+		                    .id(paymentConditions.getId())
+		                        .name(paymentConditions.getName())
+		                        .paymentMethodCode(paymentConditions.getPaymentMethodCode())
+		                        .installments(paymentConditions.getInstallments())
+		                .build()
+		        ).collect(Collectors.toList());
+		*/
+		
+		final List<DnaDtoV1> listaStream = 
+				foundDnas.stream()
+					.map(item -> 
+					DnaDtoV1.builder().id(item.getId())
+					.dna(item.getDna()).isSimian(item.getIsSimian()).
+				)
 		
 		return DnaResponse.builder().dna(lista).build();
 		
