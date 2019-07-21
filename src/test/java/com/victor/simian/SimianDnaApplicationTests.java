@@ -39,7 +39,6 @@ public class SimianDnaApplicationTests {
 		this.mvc = MockMvcBuilders.webAppContextSetup(this.context).build();
 	}
 
-<<<<<<< HEAD:src/test/java/com/victor/springredis/SpringRedisApplicationTests.java
 	@Test
 	public void testHome() throws Exception {
 
@@ -53,46 +52,4 @@ public class SimianDnaApplicationTests {
 		
 		this.mvc.perform(get(URL1).headers(headers)).andExpect(status().isOk());
 	}
-=======
-//	@Test
-//	public void testHome() throws Exception {
-//
-//		String URL1=DnaConstants.URL_API+DnaConstants.URL_SIMIAN;
-//
-//		HttpHeaders headers = new HttpHeaders();
-//	    headers.setContentType(MediaType.APPLICATION_JSON);
-//	    headers.add("Cache-Control", "no-cache");
-//
-//		System.out.println(this.mvc.perform(get(URL1).headers(headers)).andDo(print()));
-//
-//		this.mvc.perform(get(URL1).headers(headers)).andExpect(status().isOk());
-//	}
->>>>>>> 8b379aee17f5debcfb92ddcc8a38fc8557550931:src/test/java/com/victor/simian/SimianDnaApplicationTests.java
-
-//	@Test
-//	public void findClientesByNome() throws Exception {
-//
-//		String URL2="/api/v1/clientes/search/findByNomeAllIgnoringCase?nome=Joao";
-//		
-//		System.out.println(this.mvc.perform(get(URL2)).andDo(print()));
-//		
-//		this.mvc.perform(
-//				get(URL2))
-//				.andExpect(status().isOk())
-//				.andExpect((ResultMatcher) jsonPath("endereco", equals("Barueri")));
-//	}
-
-//	@Test
-//	public void findClientesByNomeContaining() throws Exception {
-//
-//		String URL3="/api/v1/clientes/search/findByNomeContainingAllIgnoringCase?nome=dro";
-//		
-//		System.out.println(this.mvc.perform(get(URL3)).andDo(print()));
-//		
-//		this.mvc.perform(
-//				get(URL3))
-//				.andExpect(status().isOk())
-//				.andExpect(jsonPath("_embedded.clientes", hasSize(2)));
-//	}
-	
 }
