@@ -42,7 +42,7 @@ public class SpringRedisApplicationTests {
 	@Test
 	public void testHome() throws Exception {
 
-		String URL1=DnaConstants.URL_SIMIAN;
+		String URL1=DnaConstants.URL_API+DnaConstants.URL_SIMIAN;
 		
 		HttpHeaders headers = new HttpHeaders();
 	    headers.setContentType(MediaType.APPLICATION_JSON);
