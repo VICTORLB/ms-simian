@@ -42,7 +42,7 @@ public class SimianDnaApplicationTests {
 	@Test
 	public void testHome() throws Exception {
 
-		String URL1=DnaConstants.URL_API+DnaConstants.URL_SIMIAN;
+		String URL1=DnaConstants.URL_LIST;
 		
 		HttpHeaders headers = new HttpHeaders();
 	    headers.setContentType(MediaType.APPLICATION_JSON);

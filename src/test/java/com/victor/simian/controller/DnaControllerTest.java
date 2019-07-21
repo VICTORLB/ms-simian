@@ -33,7 +33,7 @@ public class DnaControllerTest {
     @Test
     public void getList() throws Exception{
 
-        String URL= DnaConstants.URL_API+DnaConstants.URL_SIMIAN;
+        String URL= DnaConstants.URL_LIST;
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -46,7 +46,7 @@ public class DnaControllerTest {
 
     @Test
     public void getStats() throws Exception{
-        String URL= DnaConstants.URL_API+DnaConstants.URL_SIMIAN+DnaConstants.URL_STATS;
+        String URL= DnaConstants.URL_STATS;
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -62,7 +62,7 @@ public class DnaControllerTest {
     @Test
     public void postDna() throws Exception{
 
-        String URL= DnaConstants.URL_API+DnaConstants.URL_SIMIAN;
+        String URL= DnaConstants.URL_SIMIAN;
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
