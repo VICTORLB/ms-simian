@@ -71,7 +71,6 @@ public class DnaBOImpl implements DnaBO {
 	}
 
 	public DnaDtoV1 addDna(DnaHumanSimianDtoV1 dnaRequest) {
-		LOGGER.info("DNA [{}] Verify if exists!", Arrays.toString(dnaRequest.getDna()));
 		Dna dna = dnaRepository.findByDna(Arrays.toString(dnaRequest.getDna()));
 		if (dna == null){
 			Dna dnaSaved = dnaRepository.saveAndFlush(Dna.builder().dna(Arrays.toString(dnaRequest.getDna()))
