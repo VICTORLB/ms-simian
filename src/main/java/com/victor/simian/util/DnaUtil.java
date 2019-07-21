@@ -10,22 +10,42 @@ public class DnaUtil {
 
 		Boolean isSimian = Boolean.FALSE;
 
-		char[][] table = convertToTable(dna);
-		Boolean isSimiusByDiagonallyR = isSimiusByDiagonally(table, DnaConstants.DIRECTION_RIGHT);
-		Boolean isSimiusByDiagonallyL = isSimiusByDiagonally(table, DnaConstants.DIRECTION_LEFT);
-		Boolean isSimiosByRow = isSimiosByRow(dna);
-		Boolean isSimiusByColumn = isSimiusByColumn(table);
+		if (isSimiosRow(dna)) return Boolean.TRUE;
 
-		System.out.println(">>>> return Simios >\n by row[" + isSimiosByRow + "] " + "\nby column[" + isSimiusByColumn
-				+ "], " + "\nby byDiagonallyRigth[" + isSimiusByDiagonallyR + "], " + "\nby byDiagonallyLeft["
+		char[][] table = convertToTable(dna);
+
+		if (isSimiusColumn(table)) return Boolean.TRUE;
+
+		if (isSimiusDiagonally(table, DnaConstants.DIRECTION_RIGHT)) return Boolean.TRUE;
+
+		if (isSimiusDiagonally(table, DnaConstants.DIRECTION_LEFT)) return Boolean.TRUE;
+
+		return isSimian;
+	}
+
+	public static Boolean isSimianComplete(String[] dna) {
+
+		Boolean isSimian = Boolean.FALSE;
+
+		char[][] table = convertToTable(dna);
+		Boolean isSimiosRow = isSimiosRow(dna);
+		Boolean isSimiosColumn = isSimiusColumn(table);
+
+		Boolean isSimiusByDiagonallyR = isSimiusDiagonally(table, DnaConstants.DIRECTION_RIGHT);
+
+		Boolean isSimiusByDiagonallyL = isSimiusDiagonally(table, DnaConstants.DIRECTION_LEFT);
+
+
+		System.out.println(">>>> return Simios >\n isSimiosRow[" + isSimiosRow + "] " + "\nisSimiosColumn[" + isSimiosColumn
+				+ "], " + "\n isSimiusByDiagonallyR[" + isSimiusByDiagonallyR + "], " + "\nby isSimiusByDiagonallyL["
 				+ isSimiusByDiagonallyL + "], ");
-		if (isSimiusByDiagonallyR || isSimiusByDiagonallyL || isSimiosByRow || isSimiusByColumn)
+		if (isSimiusByDiagonallyR || isSimiusByDiagonallyL || isSimiosRow || isSimiosColumn)
 			isSimian = Boolean.TRUE;
 
 		return isSimian;
 	}
 
-	private static Boolean isSimiosByRow(String[] dna) {
+	private static Boolean isSimiosRow(String[] dna) {
 
 		Boolean isSimios = Boolean.FALSE;
 		for (int i = 0; i < dna.length; i++) {
@@ -51,7 +71,7 @@ public class DnaUtil {
 
 	}
 
-	private static Boolean isSimiusByColumn(char[][] tableDna) {
+	private static Boolean isSimiusColumn(char[][] tableDna) {
 		
 		Boolean isSimios = Boolean.FALSE;
 		for (int col = 0; col < 6; col++) {
@@ -79,7 +99,7 @@ public class DnaUtil {
 		return isSimios;
 	}
 
-	private static Boolean isSimiusByDiagonally(char[][] tableDna, String direction) {
+	private static Boolean isSimiusDiagonally(char[][] tableDna, String direction) {
 
 		Boolean isSimios = Boolean.FALSE;
 
