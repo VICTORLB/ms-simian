@@ -20,9 +20,9 @@ $ sh startup.sh
 ```
 ## Routes
 
-GET http://localhost:9000/api/v1/stats
+GET http://localhost:9000/stats
 
-POST http://localhost:9000/api/v1/simian
+POST http://localhost:9000/simian
 
 Example 
 ```curl -X POST \
