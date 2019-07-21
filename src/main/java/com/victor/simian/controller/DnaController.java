@@ -51,7 +51,7 @@ public class DnaController {
 		DnaDtoV1 dnaResponse = dnaBO.addDna(dnaHumanSimian); 
 		
 		if (dnaResponse != null) {
-			if (dnaResponse.getIsSimian())
+			if (dnaResponse.getIsSimian() != null)
 				return ResponseEntity.ok().body(dnaResponse);
 			else {
 				return new ResponseEntity<>(HttpStatus.FORBIDDEN);

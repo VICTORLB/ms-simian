@@ -2,10 +2,12 @@ package com.victor.simian.businessimpl;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.hibernate.HibernateException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -23,7 +25,6 @@ import com.victor.simian.util.DnaUtil;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import static java.math.RoundingMode.DOWN;
 
 @Slf4j
 @Service
@@ -52,10 +53,15 @@ public class DnaBOImpl implements DnaBO {
 
 		final List<Dna> foundDnas = dnaRepository.findAll();
 
-		Long totalDnas = foundDnas.stream().count();
+		long count = 0L;
+		for (Dna ignored : foundDnas) count++;
+		Long totalDnas = count;
 		Long totalSimian = foundDnas.stream().filter(dnas -> dnas.getIsSimian().equals(Boolean.TRUE)).count();
 		Long totalHuman = foundDnas.stream().filter(dnas -> dnas.getIsSimian().equals(Boolean.FALSE)).count();
-		Double ratio = (Double.valueOf(totalSimian))/(Double.valueOf(totalHuman));
+
+
+		BigDecimal ratio = BigDecimal.valueOf(totalSimian).divide(BigDecimal.valueOf(totalHuman), 2, RoundingMode.UP);
+
 
 		LOGGER.info("count_mutant_dna [{}], count_human_dna[{}], ratio[{}], totalDnas[{}]", totalSimian, totalHuman,
 				ratio, totalDnas);
@@ -65,10 +71,17 @@ public class DnaBOImpl implements DnaBO {
 	}
 
 	public DnaDtoV1 addDna(DnaHumanSimianDtoV1 dnaRequest) {
-		Dna dna = dnaRepository.saveAndFlush(Dna.builder().dna(Arrays.toString(dnaRequest.getDna()))
-				.isSimian(DnaUtil.isSimian(dnaRequest.getDna())).build());
+		LOGGER.info("DNA [{}] Verify if exists!", Arrays.toString(dnaRequest.getDna()));
+		Dna dna = dnaRepository.findByDna(Arrays.toString(dnaRequest.getDna()));
+		if (dna == null){
+			Dna dnaSaved = dnaRepository.saveAndFlush(Dna.builder().dna(Arrays.toString(dnaRequest.getDna()))
+					.isSimian(DnaUtil.isSimian(dnaRequest.getDna())).build());
 
-		return DnaDtoV1.builder().dna(dna.getDna()).id(dna.getId()).isSimian(dna.getIsSimian()).build();
+			return DnaDtoV1.builder().dna(dnaSaved.getDna()).id(dnaSaved.getId()).isSimian(dnaSaved.getIsSimian()).build();
+		}
+		LOGGER.info("DNA [{}] already exists!", Arrays.toString(dnaRequest.getDna()));
+		return DnaDtoV1.builder().build();
+
 	}
 
 }
