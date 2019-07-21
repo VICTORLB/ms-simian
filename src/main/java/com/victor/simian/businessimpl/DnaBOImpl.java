@@ -1,6 +1,7 @@
 package com.victor.simian.businessimpl;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,6 +22,8 @@ import com.victor.simian.util.DnaUtil;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
+import static java.math.RoundingMode.DOWN;
 
 @Slf4j
 @Service
@@ -52,7 +55,8 @@ public class DnaBOImpl implements DnaBO {
 		Long totalDnas = foundDnas.stream().count();
 		Long totalSimian = foundDnas.stream().filter(dnas -> dnas.getIsSimian().equals(Boolean.TRUE)).count();
 		Long totalHuman = foundDnas.stream().filter(dnas -> dnas.getIsSimian().equals(Boolean.FALSE)).count();
-		BigDecimal ratio = BigDecimal.valueOf(totalSimian).divide(BigDecimal.valueOf(totalHuman));
+		Double ratio = (Double.valueOf(totalSimian))/(Double.valueOf(totalHuman));
+
 		LOGGER.info("count_mutant_dna [{}], count_human_dna[{}], ratio[{}], totalDnas[{}]", totalSimian, totalHuman,
 				ratio, totalDnas);
 

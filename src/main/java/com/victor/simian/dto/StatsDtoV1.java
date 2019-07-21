@@ -24,7 +24,7 @@ public class StatsDtoV1 {
 	
     public static final String RATIO = "ratio";
     @JsonProperty(RATIO)
-    private final BigDecimal ratio;
+    private final Double ratio;
 		
 	
 }

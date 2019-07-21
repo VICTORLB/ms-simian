@@ -9,6 +9,7 @@ public class DnaConstants {
 	public static final String URL_API = "/api/v1";
 	public static final String URL_SIMIAN = "/simian";	
 	public static final String URL_STATS = "/stats";	
-	
+	public static final String URL_LIST = "/list";
+
 	
 }

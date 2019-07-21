@@ -20,7 +20,7 @@ import com.victor.simian.dto.StatsDtoV1;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@RequestMapping(value =DnaConstants.URL_API+DnaConstants.URL_SIMIAN,
+@RequestMapping(
 produces = {
         MediaType.APPLICATION_JSON_VALUE,
         MediaType.APPLICATION_JSON_UTF8_VALUE
@@ -35,7 +35,7 @@ public class DnaController {
         this.dnaBO = dnaBO;
     }
 	
-	@GetMapping
+	@GetMapping(DnaConstants.URL_LIST)
 	public ResponseEntity<DnaResponse> getList() {
 		return new ResponseEntity<>(dnaBO.getDnas(), HttpStatus.OK);
 	}
@@ -45,7 +45,7 @@ public class DnaController {
 		return new ResponseEntity<>(dnaBO.getStats(), HttpStatus.OK);
 	}
 	
-	@PostMapping	
+	@PostMapping(value =DnaConstants.URL_SIMIAN)
 	public ResponseEntity<DnaDtoV1> postDna(@RequestBody DnaHumanSimianDtoV1 dnaHumanSimian) {
 		
 		DnaDtoV1 dnaResponse = dnaBO.addDna(dnaHumanSimian); 
