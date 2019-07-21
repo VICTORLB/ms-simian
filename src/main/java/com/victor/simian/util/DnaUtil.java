@@ -1,8 +1,8 @@
-package com.victor.springredis.util;
+package com.victor.simian.util;
 
 import java.util.Arrays;
 
-import com.victor.springredis.constants.DnaConstants;
+import com.victor.simian.constants.DnaConstants;
 
 public class DnaUtil {
 

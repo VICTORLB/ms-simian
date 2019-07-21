@@ -1,4 +1,4 @@
-package com.victor.springredis.carga;
+package com.victor.simian.carga;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,8 +8,8 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import com.victor.springredis.model.Dna;
-import com.victor.springredis.repository.DnaRepository;
+import com.victor.simian.model.Dna;
+import com.victor.simian.repository.DnaRepository;
 
 
 @Component

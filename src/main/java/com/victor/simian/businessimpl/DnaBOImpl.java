@@ -1,26 +1,23 @@
-package com.victor.springredis.businessimpl;
+package com.victor.simian.businessimpl;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.victor.springredis.business.DnaBO;
-import com.victor.springredis.dto.DnaDtoV1;
-import com.victor.springredis.dto.DnaHumanSimianDtoV1;
-import com.victor.springredis.dto.DnaResponse;
-import com.victor.springredis.dto.StatsDtoV1;
-import com.victor.springredis.model.Dna;
-import com.victor.springredis.repository.DnaRepository;
-import com.victor.springredis.util.DnaUtil;
+import com.victor.simian.business.DnaBO;
+import com.victor.simian.dto.DnaDtoV1;
+import com.victor.simian.dto.DnaHumanSimianDtoV1;
+import com.victor.simian.dto.DnaResponse;
+import com.victor.simian.dto.StatsDtoV1;
+import com.victor.simian.model.Dna;
+import com.victor.simian.repository.DnaRepository;
+import com.victor.simian.util.DnaUtil;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

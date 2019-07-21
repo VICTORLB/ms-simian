@@ -1,4 +1,4 @@
-package com.victor.springredis.constants;
+package com.victor.simian.constants;
 
 public class DnaConstants {
 

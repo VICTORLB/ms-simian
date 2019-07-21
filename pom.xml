@@ -10,10 +10,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.victor</groupId>
-	<artifactId>spring-redis</artifactId>
+	<artifactId>ms-simian</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-redis</name>
-	<description>Redis Spring Boot</description>
+	<name>ms-simian</name>
+	<description>MS Simian Dna</description>
 
 	<properties>
 		<java.version>1.8</java.version>

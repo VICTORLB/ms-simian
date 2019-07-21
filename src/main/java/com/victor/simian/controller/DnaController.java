@@ -1,4 +1,4 @@
-package com.victor.springredis.controller;
+package com.victor.simian.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.victor.springredis.business.DnaBO;
-import com.victor.springredis.constants.DnaConstants;
-import com.victor.springredis.dto.DnaDtoV1;
-import com.victor.springredis.dto.DnaHumanSimianDtoV1;
-import com.victor.springredis.dto.DnaResponse;
-import com.victor.springredis.dto.StatsDtoV1;
+import com.victor.simian.business.DnaBO;
+import com.victor.simian.constants.DnaConstants;
+import com.victor.simian.dto.DnaDtoV1;
+import com.victor.simian.dto.DnaHumanSimianDtoV1;
+import com.victor.simian.dto.DnaResponse;
+import com.victor.simian.dto.StatsDtoV1;
 
 import lombok.extern.slf4j.Slf4j;
 

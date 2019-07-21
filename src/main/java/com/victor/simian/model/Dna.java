@@ -1,4 +1,4 @@
-package com.victor.springredis.model;
+package com.victor.simian.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +7,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
-import com.victor.springredis.constants.DnaConstants;
+import com.victor.simian.constants.DnaConstants;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

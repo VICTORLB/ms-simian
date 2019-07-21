@@ -1,4 +1,4 @@
-package com.victor.springredis;
+package com.victor.simian;
 
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -18,12 +18,12 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.victor.springredis.constants.DnaConstants;
+import com.victor.simian.constants.DnaConstants;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class SpringRedisApplicationTests {
+public class SimianDnaApplicationTests {
 
 	@Test
 	public void contextLoads() {
@@ -39,6 +39,7 @@ public class SpringRedisApplicationTests {
 		this.mvc = MockMvcBuilders.webAppContextSetup(this.context).build();
 	}
 
+<<<<<<< HEAD:src/test/java/com/victor/springredis/SpringRedisApplicationTests.java
 	@Test
 	public void testHome() throws Exception {
 
@@ -52,6 +53,21 @@ public class SpringRedisApplicationTests {
 		
 		this.mvc.perform(get(URL1).headers(headers)).andExpect(status().isOk());
 	}
+=======
+//	@Test
+//	public void testHome() throws Exception {
+//
+//		String URL1=DnaConstants.URL_API+DnaConstants.URL_SIMIAN;
+//
+//		HttpHeaders headers = new HttpHeaders();
+//	    headers.setContentType(MediaType.APPLICATION_JSON);
+//	    headers.add("Cache-Control", "no-cache");
+//
+//		System.out.println(this.mvc.perform(get(URL1).headers(headers)).andDo(print()));
+//
+//		this.mvc.perform(get(URL1).headers(headers)).andExpect(status().isOk());
+//	}
+>>>>>>> 8b379aee17f5debcfb92ddcc8a38fc8557550931:src/test/java/com/victor/simian/SimianDnaApplicationTests.java
 
 //	@Test
 //	public void findClientesByNome() throws Exception {
