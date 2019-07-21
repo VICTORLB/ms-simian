@@ -1,4 +1,4 @@
-package com.victor.springredis.model;
+package com.victor.simian.model;
 
 import java.io.Serializable;
 

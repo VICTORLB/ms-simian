@@ -1,4 +1,4 @@
-package com.victor.springredis.dto;
+package com.victor.simian.dto;
 
 import java.math.BigDecimal;
 

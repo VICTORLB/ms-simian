@@ -1,6 +1,6 @@
-package com.victor.springredis.dto;
+package com.victor.simian.dto;
 
-import com.victor.springredis.model.BaseDomain;
+import com.victor.simian.model.BaseDomain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

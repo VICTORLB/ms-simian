@@ -1,4 +1,4 @@
-package com.victor.springredis;
+package com.victor.simian;
 
 import java.util.Arrays;
 
