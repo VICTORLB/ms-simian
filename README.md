@@ -30,9 +30,9 @@ $ sh startup.sh
 ```
 ## Routes
 
-GET http://localhost:9000/api/v1/simian/
+GET http://localhost:9000/api/v1/stats
 
-POST http://localhost:9000/api/v1/simian/
+POST http://localhost:9000/api/v1/simian
 
 Example 
 ```curl -X POST \
