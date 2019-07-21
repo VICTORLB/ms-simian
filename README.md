@@ -1,17 +1,7 @@
 ## MS-Simian
 
-
-### Requirements
-Describe all dependencies and why it's necessary
-* [Redis 3.x for cache of objects]
-
 ### Development setup
 Describe how to install all development dependencies and how to run an automated test-suite of some kind. 
-
-#### Installing [redis]
-```sh
-$ [brew install redis]
-```
 
 ### Compiling 
 ```sh
@@ -30,9 +20,9 @@ $ sh startup.sh
 ```
 ## Routes
 
-GET http://localhost:9000/api/v1/simian/
+GET http://localhost:9000/api/v1/stats
 
-POST http://localhost:9000/api/v1/simian/
+POST http://localhost:9000/api/v1/simian
 
 Example 
 ```curl -X POST \
