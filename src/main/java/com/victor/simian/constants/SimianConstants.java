@@ -1,6 +1,6 @@
 package com.victor.simian.constants;
 
-public class DnaConstants {
+public class SimianConstants {
 
 	public static final String DIRECTION_RIGHT = "R";
 	public static final String DIRECTION_LEFT = "L";

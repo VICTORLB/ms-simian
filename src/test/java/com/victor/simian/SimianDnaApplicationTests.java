@@ -18,7 +18,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.victor.simian.constants.DnaConstants;
+import com.victor.simian.constants.SimianConstants;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -40,9 +40,9 @@ public class SimianDnaApplicationTests {
 	}
 
 	@Test
-	public void testHome() throws Exception {
+	public void test() throws Exception {
 
-		String URL1=DnaConstants.URL_LIST;
+		String URL1= SimianConstants.URL_LIST;
 		
 		HttpHeaders headers = new HttpHeaders();
 	    headers.setContentType(MediaType.APPLICATION_JSON);

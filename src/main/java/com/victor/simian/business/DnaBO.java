@@ -9,9 +9,9 @@ import java.sql.SQLException;
 
 public interface DnaBO {
 
-	public DnaResponse getDnas();
+	DnaResponse getDnas();
 	
-	public DnaDtoV1 addDna(DnaHumanSimianDtoV1 dnaRequest);
+	DnaDtoV1 addDna(DnaHumanSimianDtoV1 dnaRequest) throws Exception;
 	
-	public StatsDtoV1 getStats();
+	StatsDtoV1 getStats();
 }

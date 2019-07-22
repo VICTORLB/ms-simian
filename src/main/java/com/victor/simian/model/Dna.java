@@ -7,7 +7,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
-import com.victor.simian.constants.DnaConstants;
+import com.victor.simian.constants.SimianConstants;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,14 +19,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 @Entity
-@Table(name = DnaConstants.DNA, uniqueConstraints = {
+@Table(name = SimianConstants.DNA, uniqueConstraints = {
 	      @UniqueConstraint(columnNames = "dna", name = "uniqueDnaConstraint")}
 	)
 public class Dna extends BaseDomain {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4241591921865446727L;
 
 	@Id

@@ -1,6 +1,6 @@
 package com.victor.simian.controller;
 
-import com.victor.simian.constants.DnaConstants;
+import com.victor.simian.constants.SimianConstants;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
 
-import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -33,7 +32,7 @@ public class DnaControllerTest {
     @Test
     public void getList() throws Exception{
 
-        String URL= DnaConstants.URL_LIST;
+        String URL= SimianConstants.URL_LIST;
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -46,7 +45,7 @@ public class DnaControllerTest {
 
     @Test
     public void getStats() throws Exception{
-        String URL= DnaConstants.URL_STATS;
+        String URL= SimianConstants.URL_STATS;
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -62,7 +61,7 @@ public class DnaControllerTest {
     @Test
     public void postDna() throws Exception{
 
-        String URL= DnaConstants.URL_SIMIAN;
+        String URL= SimianConstants.URL_SIMIAN;
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);

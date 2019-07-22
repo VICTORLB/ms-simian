@@ -18,9 +18,13 @@ public class RepositoryTeste implements ApplicationRunner
 
 	@Autowired
     private DnaRepository dnaRepository;
-	
-    @Override
-    public void run(ApplicationArguments applicationArguments) throws Exception {
+
+	public RepositoryTeste(DnaRepository dnaRepository) {
+		this.dnaRepository = dnaRepository;
+	}
+
+	@Override
+    public void run(ApplicationArguments applicationArguments) {
 
     	System.out.println(">>> Iniciando carga de dados de DNA...");
     	List<Dna> listDna = new ArrayList<>();
@@ -46,9 +50,8 @@ public class RepositoryTeste implements ApplicationRunner
     	listDna.add(Dna.builder().dna("[CTGAGA, CTATGC, TATTGT, AGATGG, CCCCTA, TCACGT]").isSimian(true).build());
     	listDna.add(Dna.builder().dna("[CTGAGA, CTATGC, TATTGT, AGATGG, CCCCTA, TCACAT]").isSimian(true).build());
     	listDna.add(Dna.builder().dna("[CTGAGA, CTATGC, TATTGT, AGATGG, CCCCTA, TCACCT]").isSimian(true).build());
-    	
-//    	Dna dna1 = Dna.builder().dna("[AAGAGA, TCAAGC, TTCTGT, ACGCTG, CTCGTT, TGTCGG]").isSimian(false).build();
-//    	Dna dna2 = Dna.builder().dna("[CTGAGA, CTATGC, TATTGT, AGATGG, CCCCTA, TCACTG]").isSimian(true).build();
+
+
     	dnaRepository.saveAll(listDna);
     	dnaRepository.flush();
     	

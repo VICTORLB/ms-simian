@@ -9,7 +9,7 @@ public class IndexController {
 	
 	@RequestMapping("/")
 	String home () {
-		return "Test Simios!";
+		return "Simian DNA Indentify say Welcome!";
 	}
 	
 }
