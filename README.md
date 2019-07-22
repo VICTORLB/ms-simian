@@ -11,7 +11,7 @@ $ mvn clean install
 ### Starting 
 ```sh
 $ mvn spring-boot:run
-$ open http://$(hostname):9000
+$ open http://$(hostname):8080
 ```
 
 ### Compiling and Starting
@@ -20,13 +20,13 @@ $ sh startup.sh
 ```
 ## Routes
 
-GET http://localhost:9000/stats
+GET http://ec2-18-222-132-15.us-east-2.compute.amazonaws.com:8080/stats
 
-POST http://localhost:9000/simian
+POST http://ec2-18-222-132-15.us-east-2.compute.amazonaws.com:8080/simian
 
 Example 
 ```curl -X POST \
-  http://localhost:9000/api/v1/simian/ \
+  http://ec2-18-222-132-15.us-east-2.compute.amazonaws.com:8080/simian/ \
   -H 'Content-Type: application/json' \
   -H 'Postman-Token: 47c04b8c-5011-44d2-bd5f-886690626094' \
   -H 'cache-control: no-cache' \
