@@ -56,21 +56,4 @@ public class DnaControllerTest {
         this.mvc.perform(get(URL).headers(headers)).andExpect(status().isOk());
     }
 
-
-
-    @Test
-    public void postDna() throws Exception{
-
-        String URL= SimianConstants.URL_SIMIAN;
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.add("Cache-Control", "no-cache");
-
-        System.out.println(this.mvc.perform(get(URL).headers(headers)).andDo(print()));
-
-//        this.mvc.perform(post(URL).header(headers).);
-
-
-    }
 }
