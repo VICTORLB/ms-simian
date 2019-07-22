@@ -19,6 +19,8 @@ import com.victor.simian.dto.StatsDtoV1;
 
 import lombok.extern.slf4j.Slf4j;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping(
 produces = {

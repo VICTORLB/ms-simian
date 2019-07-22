@@ -9,6 +9,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -17,10 +20,11 @@ import lombok.ToString;
 @Builder
 public class DnaHumanSimianDtoV1 extends BaseDomain {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -6763851089994196681L;
+
+
+	@NotBlank(message = "{dna.not.blank}")
 	private String[] dna;
 	
 }
