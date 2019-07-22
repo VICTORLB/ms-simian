@@ -26,11 +26,13 @@ POST http://ec2-18-222-132-15.us-east-2.compute.amazonaws.com:8080/simian
 
 Example 
 ```curl -X POST \
-  http://ec2-18-222-132-15.us-east-2.compute.amazonaws.com:8080/simian/ \
+  http://ec2-18-222-132-15.us-east-2.compute.amazonaws.com:8080/simian \
+  -H 'Accept: */*' \
+  -H 'Cache-Control: no-cache' \
+  -H 'Connection: keep-alive' \
   -H 'Content-Type: application/json' \
-  -H 'Postman-Token: 47c04b8c-5011-44d2-bd5f-886690626094' \
-  -H 'cache-control: no-cache' \
+  -H 'Host: ec2-18-222-132-15.us-east-2.compute.amazonaws.com:8080' \
   -d '{
-      "dna": ["AAGAGA", "TCAAGC", "TTCTGT", "ACGCTG", "CTCGTT", "TGTCGA"]
+      "dna": ["CTGAGG", "CTTTGC", "TAGTGT", "AEGEGG", "CGCCTA", "TCACTT"]
 }'
   ```
