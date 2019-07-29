@@ -2,6 +2,7 @@ package com.victor.simian.use_case.impl;
 
 import com.victor.simian.business.DnaBO;
 import com.victor.simian.dto.DnaDtoV1;
+import com.victor.simian.dto.DnaRequest;
 import com.victor.simian.dto.DnaResponse;
 import com.victor.simian.dto.StatsDtoV1;
 import com.victor.simian.model.Dna;
@@ -11,6 +12,7 @@ import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
@@ -23,7 +25,7 @@ public abstract class GetDnaStatsUseCaseBase implements GetDnaStatsUseCase {
     private final DnaBO dnaBO;
 
     @Override
-    public StatsDtoV1 execute(StatsDtoV1 statsDtoV1){
+    public StatsDtoV1 execute(Optional<DnaRequest> dnaRequest){
 
         final StatsDtoV1 statsDtoV11 = dnaBO.getStats();
 
