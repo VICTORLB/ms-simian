@@ -1,5 +1,6 @@
 package com.victor.simian.controller;
 
+import com.victor.simian.use_case.GetDnaStatsUseCase;
 import com.victor.simian.use_case.impl.GetDnaUseCaseBase;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ import com.victor.simian.dto.DnaHumanSimianDtoV1;
 import com.victor.simian.dto.DnaResponse;
 import com.victor.simian.dto.StatsDtoV1;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping(
 produces = {
@@ -32,21 +35,25 @@ public class DnaController {
 
 	private final GetDnaUseCaseBase getDnaUseCaseBase;
 
+	private final GetDnaStatsUseCase getDnaStatsUseCase;
+
 	@Autowired
-    public DnaController(final DnaBO dnaBO, final GetDnaUseCaseBase getDnaUseCaseBase) {
+    public DnaController(final DnaBO dnaBO, final GetDnaUseCaseBase getDnaUseCaseBase, final GetDnaStatsUseCase getDnaStatsUseCase) {
         this.dnaBO = dnaBO;
 		this.getDnaUseCaseBase = getDnaUseCaseBase;
+		this.getDnaStatsUseCase= getDnaStatsUseCase;
     }
 	
 	@GetMapping(SimianConstants.URL_LIST)
 	public ResponseEntity<DnaResponse> getList() {
-		return ResponseEntity.ok().body(getDnaUseCaseBase.execute(null));
+		return ResponseEntity.ok().body(getDnaUseCaseBase.execute(DnaResponse.builder().build()));
+//		return new ResponseEntity<>(dnaBO.getDnas(), HttpStatus.OK);
 	}
 
 	@GetMapping(SimianConstants.URL_STATS)
 	public ResponseEntity<StatsDtoV1> getStats() {
-
-		return new ResponseEntity<>(dnaBO.getStats(), HttpStatus.OK);
+		return ResponseEntity.ok().body(getDnaStatsUseCase.execute(StatsDtoV1.builder().build()));
+		//return new ResponseEntity<>(dnaBO.getStats(), HttpStatus.OK);
 	}
 	
 	@PostMapping(value = SimianConstants.URL_SIMIAN)

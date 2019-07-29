@@ -8,7 +8,6 @@ import com.victor.simian.use_case.GetDnaUseCase;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 
-import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,11 +21,11 @@ public abstract class GetDnaUseCaseBase implements GetDnaUseCase {
     private final DnaRepository dnaRepository;
 
     @Override
-    public DnaResponse execute(@NotNull DnaResponse dnaResponse){
+    public DnaResponse execute(DnaResponse dnaResponse){
 
         final List<Dna> foundDnas = dnaRepository.findAll();
 
-
+        LOGGER.info("{} List of Dna by UseCase " , DNA_PREFIX);
         if (foundDnas == null) {
             LOGGER.info("{} List of Dna not found...", DNA_PREFIX);
             return DnaResponse.builder().build();

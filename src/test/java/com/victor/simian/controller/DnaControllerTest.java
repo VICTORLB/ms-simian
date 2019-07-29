@@ -32,15 +32,15 @@ public class DnaControllerTest {
     @Test
     public void getList() throws Exception{
 
-//        String URL= SimianConstants.URL_LIST;
-//
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.setContentType(MediaType.APPLICATION_JSON);
-//        headers.add("Cache-Control", "no-cache");
-//
-//        System.out.println(this.mvc.perform(get(URL).headers(headers)).andDo(print()));
-//
-//        this.mvc.perform(get(URL).headers(headers)).andExpect(status().isOk());
+        String URL= SimianConstants.URL_LIST;
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.add("Cache-Control", "no-cache");
+
+        System.out.println(this.mvc.perform(get(URL).headers(headers)).andDo(print()));
+
+        this.mvc.perform(get(URL).headers(headers)).andExpect(status().isOk());
     }
 
     @Test
