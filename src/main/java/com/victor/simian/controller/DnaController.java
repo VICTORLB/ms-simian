@@ -1,5 +1,7 @@
 package com.victor.simian.controller;
 
+import com.victor.simian.use_case.impl.GetDnaUseCaseBase;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -28,18 +30,22 @@ public class DnaController {
 
 	private final DnaBO dnaBO;
 
+	private final GetDnaUseCaseBase getDnaUseCaseBase;
+
 	@Autowired
-    public DnaController(final DnaBO dnaBO) {
+    public DnaController(final DnaBO dnaBO, final GetDnaUseCaseBase getDnaUseCaseBase) {
         this.dnaBO = dnaBO;
+		this.getDnaUseCaseBase = getDnaUseCaseBase;
     }
 	
 	@GetMapping(SimianConstants.URL_LIST)
 	public ResponseEntity<DnaResponse> getList() {
-		return new ResponseEntity<>(dnaBO.getDnas(), HttpStatus.OK);
+		return ResponseEntity.ok().body(getDnaUseCaseBase.execute(null));
 	}
 
 	@GetMapping(SimianConstants.URL_STATS)
 	public ResponseEntity<StatsDtoV1> getStats() {
+
 		return new ResponseEntity<>(dnaBO.getStats(), HttpStatus.OK);
 	}
 	
