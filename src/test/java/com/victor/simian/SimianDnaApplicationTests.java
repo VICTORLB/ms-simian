@@ -43,13 +43,13 @@ public class SimianDnaApplicationTests {
 	public void test() throws Exception {
 
 		String URL1= SimianConstants.URL_LIST;
-		
+
 		HttpHeaders headers = new HttpHeaders();
 	    headers.setContentType(MediaType.APPLICATION_JSON);
 	    headers.add("Cache-Control", "no-cache");
-		
+
 		System.out.println(this.mvc.perform(get(URL1).headers(headers)).andDo(print()));
-		
+
 		this.mvc.perform(get(URL1).headers(headers)).andExpect(status().isOk());
 	}
 }
